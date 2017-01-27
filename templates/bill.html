@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>VK Mobile MTR</title>
+</head>
+
+<body>
+    <table style="width: 100% !important;">
+        <tbody>
+            <tr>
+                <td>
+                    <table style="width: 100% !important;">
+                        <tbody>
+                            <tr>
+                                <td style="text-align: left !important; width: 50% !important;">
+                                    <h2>VK Mobiles</h2>
+                                    <p>
+                                        Address line 1<br>
+                                        Address line 2<br>
+                                        Mathura(Utar Pradesh)<br>
+                                        Pincode : 678678<br>
+                                        Contact : 6767676767, 8989898989
+                                    </p>
+                                </td>
+                                <td style="text-align: right !important; width: 50% !important;">
+                                    <h2>INVOICE</h2>
+                                    <p>
+                                        Date : {{created_date}}<br>
+                                        Invoice # : {{id}}<br>
+                                        Customer ID : {{customer.id}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                    Bill To:<br>
+                    {{customer.name}}<br>
+                    {{customer.address}}<br>
+                    Mobile : {{customer.contact_number}}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100% !important;" border="black">
+                        <thead style="background: #D3D3D3;">
+                           <td>S. No</td> 
+                           <td>Product Name</td> 
+                           <td>Unit Price</td> 
+                           <td>Quantity</td> 
+                           <td>Amount</td>
+                        </thead>
+                        <tbody>
+                            {% for prod in products %}
+                            <tr>
+                                <td>{{prod.product_id}}</td>
+                                <td>{{prod.product_model_number}} - {{prod.product_model_name}}</td>
+                                <td>{{prod.product_selling_price}}</td>
+                                <td>{{prod.quantity}}</td>
+                                <td style="text-align: right !important;">{{prod.subtotal}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <table style="width: 100% !important;">
+                    <tbody>
+                        <tr>
+                           <td style="width:50% !important;text-align: left;">
+                               <table style="width: 100% !important;" border="black">
+                                   <thead style="background: #D3D3D3;">
+                                       <td>Comments</td>
+                                   </thead>
+                                   <tbody>
+                                       <tr>
+                                           <td>
+                                               1. Please check the items at the time of purchase.
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                               2. For any queries regarding the products please bring this bill with you
+                                           </td>
+                                       </tr>
+                                   </tbody>
+                               </table>
+                           </td> 
+                           <td style="width:50% !important;text-align: right;">
+                               <table style="width: 100%">
+                                   <tr>
+                                       <td>Subtotal</td>
+                                       <td>{{total_without_discount}}</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Discounts</td>
+                                       <td>{{discount}}</td>
+                                   </tr>
+                                   <tr>
+                                       <td><b>Total</b></td>
+                                       <td><b>{{total}}</b></td>
+                                   </tr>
+                               </table>
+                           </td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </tr>
+        </tbody>
+    </table>
+    <br><br><br>
+    <p style="text-align: center !important;">
+        Thank you for doing business with us!<br>
+        Please come again<br>
+    </p>
+</body>
+
+</html>
