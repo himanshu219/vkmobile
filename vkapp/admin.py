@@ -33,7 +33,7 @@ class ProductSalesAdmin(admin.TabularInline):
 
 class SalesAdmin(admin.ModelAdmin):
     """
-        rate grandtotal subtotal  generate bill() serializers view html exe autotodos check searchfields
+        exe autotodos check searchfields
         js cases -
         total updated when discount or subtotal changes
         update subtotal when qty changes
