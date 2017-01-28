@@ -1,11 +1,12 @@
-**Inventory Management System(http://localhost:8000)**
-    * CRUD operations for Sales/Inventory/Customer
-    * Bill Generation
+#**Inventory Management System** ([Checkout](https://vast-ravine-14495.herokuapp.com/admin/))
+  * CRUD operations for Sales/Inventory/Customer
+  * Bill Generation
 
 **Building Project**
-    ./build.sh
-
+  ```
+      ./build.sh
+  ```
 **Running Server Locally**
-    python manage.py runserver 8000
-
-
+  ```
+      python manage.py runserver 8000
+  ```

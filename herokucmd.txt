@@ -1,0 +1,61 @@
+pip install gunicorn
+
+create Procfile
+web: gunicorn vkmobile.wsgi --log-file -
+
+create runtime.txt
+python-2.7.11
+
+create wsgi
+PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(PROJECT_PATH)
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vkmobile.settings")
+application = get_wsgi_application()
+
+serving static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+and in urls.py
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
+curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
+sudo apt-get install heroku
+heroku local 
+heroku login
+heroku create
+git push heroku master
+heroku open
+heroku logs --source app
+heroku logs
+heroku run python manage.py shell
+heroku run bash
+
+https://devcenter.heroku.com/articles/how-heroku-works
+
+When you deploy a Heroku application, you build a virtual machine image called a slug using one or more buildpacks. When a virtual machine instance is launched from this slug, it's called a dyno.
+
+Each dyno runs a single process inside your application virtual machine
+
+How Heroku is different from AWS
+They implement deployment, provisioning, monitoring, availability, and auto-scaling at a premium cost to raw EC2 hosting.
+
+https://devcenter.heroku.com/articles/deploying-python
+https://devcenter.heroku.com/articles/django-app-configuration
+
+Dynos
+A dyno is a lightweight Linux container that runs a single user-specified command
+dyno configurations
+    web dynos only they can recieve request
+    worker dynos for background task/jobs
+    one-off for maintenance which can run detached and io attached to local terminal
+The Common Runtime runs and manages dynos in a single multi-tenant network per region. Two regions are available, US and EU. Each dyno is secured with strong firewall rules so even though all dynos run in a single, flat network, they are strongly isolated from each other.
+Dynos in the Common Runtime can only receive connections from the routing layer, which is responsible for correctly and securely forwarding inbound web requests to dynos' web process listening at $PORT environment variable.
+The Common Runtime has a single Dyno Manager per region that is responsible for managing all dynos across all tenants running in a region. The Private Spaces Runtime has a dedicated Dyno Manager per space. 
+
+Disadvantage
+If an app has a web dyno, and that web dyno receives no traffic in a 30 minute period, the web dyno will sleep
+If a sleeping web dyno receives web traffic, it will become active again after a short delay.
+Solution: free addon called Heroku Scheduler, which prompts my apps to become active once every hour.
+
+heroku ps -a <app name>
+Buildpacks are composed of a set of scripts,

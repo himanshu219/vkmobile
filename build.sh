@@ -2,7 +2,7 @@
 
 
 echo "Installing requirements"
-pip install -r requirement.txt
+pip install -r requirements.txt
 
 echo "Creating migrtations"
 python manage.py syncdb
