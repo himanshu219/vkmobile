@@ -1,13 +1,10 @@
-"""
-WSGI config for vkmobile project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
-"""
-
 import os
+import sys
+import imp
+
+PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
+
+sys.path.append(PROJECT_PATH)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vkmobile.settings")
 
 from django.core.wsgi import get_wsgi_application
